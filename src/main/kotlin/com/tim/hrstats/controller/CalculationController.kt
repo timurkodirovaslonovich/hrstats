@@ -18,7 +18,7 @@ class CalculationController(private val calculationService: CalculationService) 
     fun getForEmployee(@PathVariable employeeId: Long): List<CalculationResponse> =
         calculationService.getCalculationsForEmployee(employeeId)
 
-    // Task 2: summarize by employee for month and type
+
     @GetMapping("/summary")
     fun summaryByEmployee(
         @RequestParam year: Int,
@@ -26,7 +26,7 @@ class CalculationController(private val calculationService: CalculationService) 
         @RequestParam type: CalculationType = CalculationType.SALARY
     ) = calculationService.summarizeByEmployeeForMonth(year, month, type)
 
-    // Task 3: region summary
+
     @GetMapping("/region-summary")
     fun regionSummary(
         @RequestParam year: Int,
@@ -34,12 +34,12 @@ class CalculationController(private val calculationService: CalculationService) 
         @RequestParam regionId: Long
     ) = calculationService.regionSummaryPerEmployee(year, month, regionId)
 
-    // Task 4
+
     @GetMapping("/organization/{orgId}/average-salaries")
     fun avgPerEmployee(@PathVariable orgId: Long) =
         calculationService.averageSalaryPerEmployeeForOrganization(orgId)
 
-    // Task 5
+
     @GetMapping("/monthly-salary-vacation")
     fun salaryAndVacation(
         @RequestParam year: Int,

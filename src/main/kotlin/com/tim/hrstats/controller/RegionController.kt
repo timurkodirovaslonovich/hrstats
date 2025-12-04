@@ -26,7 +26,7 @@ class RegionController(
 ) {
 
 
-    //CREATE
+
     @PostMapping
     @Operation(method = "create", summary = "Create a new region")
     fun createRegion(@Valid @RequestBody createRegionRequest: CreateRegionRequest):
@@ -36,7 +36,7 @@ class RegionController(
     }
 
 
-    //READ
+
     @GetMapping
     @Operation(method = "getAll", summary = "Get all regions")
     fun getAllRegions(): ResponseEntity<List<CreateRegionResponse>> {
@@ -50,7 +50,6 @@ class RegionController(
         ResponseEntity.ok(regionService.findRegionById(id))
 
 
-    //UPDATE
     @PutMapping("/{id}")
     @Operation(method = "update", summary = "Update region")
     fun updateRegionById(@PathVariable id: Long, @Valid @RequestBody requestBody: CreateRegionRequest):
@@ -59,7 +58,7 @@ class RegionController(
     }
 
 
-    //DELETE
+
     @DeleteMapping("/{id}")
     @Operation(method = "deleteById", summary = "Delete region by id")
     fun deleteRegionById(@PathVariable id: Long): ResponseEntity<Unit> {

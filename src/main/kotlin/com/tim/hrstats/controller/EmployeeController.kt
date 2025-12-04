@@ -28,7 +28,7 @@ class EmployeeController(
 ) {
 
 
-    //CREATE
+
     @PostMapping
     @Operation(summary = "Add new employee")
     fun createNewEmployee(@Valid @RequestBody request: CreateEmployeeRequest): ResponseEntity<CreateEmployeeResponse> {
@@ -38,7 +38,7 @@ class EmployeeController(
     }
 
 
-    //READ
+
     @GetMapping
     @Operation(summary = "Getting all employees")
     fun getAllEmployees(): ResponseEntity<List<CreateEmployeeResponse>> {
@@ -62,7 +62,7 @@ class EmployeeController(
 
 
 
-    //UPDATE
+
 
     @PutMapping("/{id}")
     @Operation(method = "PUT", summary = "Updating employee by id")
@@ -71,7 +71,7 @@ class EmployeeController(
     }
 
 
-    //DELETE
+
 
 
     @DeleteMapping("/{id}")

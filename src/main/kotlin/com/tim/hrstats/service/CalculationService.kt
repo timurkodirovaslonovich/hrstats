@@ -14,16 +14,15 @@ interface CalculationService {
     fun createCalculation(request: CalculationRequest): CalculationResponse
     fun getCalculationsForEmployee(employeeId: Long): List<CalculationResponse>
 
-    // Task 2
+
     fun summarizeByEmployeeForMonth(year: Int, month: Int, type: CalculationType): List<EmployeeRateSummary>
 
-    // Task 3
     fun regionSummaryPerEmployee(year: Int, month: Int, regionId: Long): List<EmployeeRegionSummary>
 
-    // Task 4
+
     fun averageSalaryPerEmployeeForOrganization(orgId: Long): List<EmployeeOrgAverageSalary>
 
-    // Task 5
+
     fun salaryAndVacationPerEmployeeForMonth(year: Int, month: Int): List<SalaryVacationPerEmployee>
 }
 
@@ -94,7 +93,7 @@ class CalculationServiceImpl(
 
     override fun salaryAndVacationPerEmployeeForMonth(year: Int, month: Int): List<SalaryVacationPerEmployee> {
         return calculationRepository.salaryAndVacationPerEmployeeForMonth(year, month).map { r ->
-            // `total` might be null if sums are null; ensure total computed
+
             val salary = r.salarySum ?: Double.NaN
             val vacation = r.vacationSum ?: Double.NaN
             val total = salary.plus(vacation)

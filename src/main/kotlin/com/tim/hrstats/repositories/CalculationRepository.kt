@@ -9,13 +9,11 @@ import org.springframework.data.repository.query.Param
 
 interface CalculationRepository : JpaRepository<Calculation, Long> {
 
-    // Basic filters
+
     fun findByEmployeeId(employeeId: Long): List<Calculation>
     fun findByOrganizationId(orgId: Long): List<Calculation>
 
-    // ------------------------------------------------------------
-    // 1) Summary per employee for specific month
-    // ------------------------------------------------------------
+
     @Query("""
         SELECT new com.tim.hrstats.dto.EmployeeRateSummary(
             e.pinfl,
@@ -34,9 +32,7 @@ interface CalculationRepository : JpaRepository<Calculation, Long> {
         @Param("type") type: CalculationType
     ): List<EmployeeRateSummary>
 
-    // ------------------------------------------------------------
-    // 2) Region summary: distinct org count + total salary
-    // ------------------------------------------------------------
+
     @Query("""
         SELECT new com.tim.hrstats.dto.EmployeeRegionSummary(
             e.pinfl,
@@ -60,9 +56,7 @@ interface CalculationRepository : JpaRepository<Calculation, Long> {
         @Param("type") type: CalculationType = CalculationType.SALARY
     ): List<EmployeeRegionSummary>
 
-    // ------------------------------------------------------------
-    // 3) Org summary: employees + average salary
-    // ------------------------------------------------------------
+
     @Query("""
         SELECT new com.tim.hrstats.dto.EmployeeOrgAverageSalary(
            e.id,
@@ -81,9 +75,7 @@ interface CalculationRepository : JpaRepository<Calculation, Long> {
         @Param("type") type: CalculationType = CalculationType.SALARY
     ): List<EmployeeOrgAverageSalary>
 
-    // ------------------------------------------------------------
-    // 4) Salary + Vacation per employee for a month
-    // ------------------------------------------------------------
+
     @Query("""
         SELECT new com.tim.hrstats.dto.SalaryVacationPerEmployee(
             e.id,
